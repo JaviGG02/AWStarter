@@ -29,6 +29,10 @@ import Presentation from "layouts/pages/presentation";
 // Material Kit 2 React routes
 import routes from "routes";
 
+// AWStarter routes
+import awstarterRoutes from "awstarter/routes";
+import AWStarter from "awstarter";
+
 export default function App() {
   const { pathname } = useLocation();
 
@@ -56,8 +60,11 @@ export default function App() {
       <CssBaseline />
       <Routes>
         {getRoutes(routes)}
+        {getRoutes(awstarterRoutes)}
+        <Route path="/awstarter/*" element={<AWStarter />} />
         <Route path="/presentation" element={<Presentation />} />
-        <Route path="*" element={<Navigate to="/presentation" />} />
+        <Route path="/" element={<Navigate to="/awstarter/landing" />} />
+        <Route path="*" element={<Navigate to="/awstarter/landing" />} />
       </Routes>
     </ThemeProvider>
   );
