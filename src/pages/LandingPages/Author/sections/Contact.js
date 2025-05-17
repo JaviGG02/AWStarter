@@ -24,7 +24,7 @@ import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 // Images
-import bgImage from "assets/images/examples/blog2.jpg";
+import bgImage from "assets/images/bg-coworking.jpeg";
 
 function Contact() {
   return (
@@ -70,7 +70,7 @@ function Contact() {
                       Contact Information
                     </MKTypography>
                     <MKTypography variant="body2" color="white" opacity={0.8} mb={3}>
-                      Fill up the form and our Team will get back to you within 24 hours.
+                      Feel free to reach out for job opportunities or collaborations.
                     </MKTypography>
                     <MKBox display="flex" p={1}>
                       <MKTypography variant="button" color="white">
@@ -84,7 +84,7 @@ function Contact() {
                         ml={2}
                         fontWeight="regular"
                       >
-                        (+40) 772 100 200
+                        +1 (555) 123-4567
                       </MKTypography>
                     </MKBox>
                     <MKBox display="flex" color="white" p={1}>
@@ -99,7 +99,7 @@ function Contact() {
                         ml={2}
                         fontWeight="regular"
                       >
-                        hello@creative-tim.com
+                        javier.garcia@example.com
                       </MKTypography>
                     </MKBox>
                     <MKBox display="flex" color="white" p={1}>
@@ -114,21 +114,42 @@ function Contact() {
                         ml={2}
                         fontWeight="regular"
                       >
-                        Dyonisie Wolf Bucharest, RO 010458
+                        San Francisco, CA
                       </MKTypography>
                     </MKBox>
                     <MKBox mt={3}>
-                      <MKButton variant="text" color="white" size="large" iconOnly>
-                        <i className="fab fa-facebook" style={{ fontSize: "1.25rem" }} />
+                      <MKButton 
+                        variant="text" 
+                        color="white" 
+                        size="large" 
+                        iconOnly
+                        component="a"
+                        href="https://linkedin.com/in/javiergarcia"
+                        target="_blank"
+                      >
+                        <i className="fab fa-linkedin" style={{ fontSize: "1.25rem" }} />
                       </MKButton>
-                      <MKButton variant="text" color="white" size="large" iconOnly>
+                      <MKButton 
+                        variant="text" 
+                        color="white" 
+                        size="large" 
+                        iconOnly
+                        component="a"
+                        href="https://github.com/javiergarcia"
+                        target="_blank"
+                      >
+                        <i className="fab fa-github" style={{ fontSize: "1.25rem" }} />
+                      </MKButton>
+                      <MKButton 
+                        variant="text" 
+                        color="white" 
+                        size="large" 
+                        iconOnly
+                        component="a"
+                        href="https://twitter.com/javiergarcia"
+                        target="_blank"
+                      >
                         <i className="fab fa-twitter" style={{ fontSize: "1.25rem" }} />
-                      </MKButton>
-                      <MKButton variant="text" color="white" size="large" iconOnly>
-                        <i className="fab fa-dribbble" style={{ fontSize: "1.25rem" }} />
-                      </MKButton>
-                      <MKButton variant="text" color="white" size="large" iconOnly>
-                        <i className="fab fa-instagram" style={{ fontSize: "1.25rem" }} />
                       </MKButton>
                     </MKBox>
                   </MKBox>
@@ -138,10 +159,10 @@ function Contact() {
                 <MKBox component="form" p={2} method="post">
                   <MKBox px={3} py={{ xs: 2, sm: 6 }}>
                     <MKTypography variant="h2" mb={1}>
-                      Say Hi!
+                      Get In Touch
                     </MKTypography>
                     <MKTypography variant="body1" color="text" mb={2}>
-                      We&apos;d like to talk with you.
+                      I'm always open to discussing new projects, opportunities, or partnerships.
                     </MKTypography>
                   </MKBox>
                   <MKBox pt={0.5} pb={3} px={3}>
@@ -149,7 +170,7 @@ function Contact() {
                       <Grid item xs={12} pr={1} mb={6}>
                         <MKInput
                           variant="standard"
-                          label="My name is"
+                          label="Your Name"
                           placeholder="Full Name"
                           InputLabelProps={{ shrink: true }}
                           fullWidth
@@ -158,8 +179,8 @@ function Contact() {
                       <Grid item xs={12} pr={1} mb={6}>
                         <MKInput
                           variant="standard"
-                          label="I'm looking for"
-                          placeholder="What you love"
+                          label="Your Email"
+                          placeholder="Email Address"
                           InputLabelProps={{ shrink: true }}
                           fullWidth
                         />
@@ -167,8 +188,8 @@ function Contact() {
                       <Grid item xs={12} pr={1} mb={6}>
                         <MKInput
                           variant="standard"
-                          label="Your message"
-                          placeholder="I want to say that..."
+                          label="Your Message"
+                          placeholder="How can I help you?"
                           InputLabelProps={{ shrink: true }}
                           fullWidth
                           multiline

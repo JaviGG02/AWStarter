@@ -63,8 +63,8 @@ export default function App() {
         {getRoutes(awstarterRoutes)}
         <Route path="/awstarter/*" element={<AWStarter />} />
         <Route path="/presentation" element={<Presentation />} />
-        <Route path="/" element={<Navigate to="/awstarter/landing" />} />
-        <Route path="*" element={<Navigate to="/awstarter/landing" />} />
+        <Route path="/" element={<Navigate to="/awstarter/home" />} />
+        <Route path="*" element={<Navigate to="/awstarter/home" />} />
       </Routes>
     </ThemeProvider>
   );

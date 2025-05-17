@@ -37,7 +37,7 @@ function Footer() {
             mb={{ xs: 3, lg: 0 }}
           >
             <MKTypography variant="h6" textTransform="uppercase" mb={{ xs: 2, lg: 3 }}>
-              Material Design
+              Javier Garcia
             </MKTypography>
             <Stack
               component="ul"
@@ -55,7 +55,7 @@ function Footer() {
                   fontWeight="regular"
                   opacity={0.8}
                   component={Link}
-                  href="https://www.creative-tim.com"
+                  href="#"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -68,11 +68,11 @@ function Footer() {
                   fontWeight="regular"
                   opacity={0.8}
                   component={Link}
-                  href="https://www.creative-tim.com/presentation"
+                  href="#skills"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  About
+                  Skills
                 </MKTypography>
               </MKBox>
               <MKBox component="li">
@@ -81,11 +81,11 @@ function Footer() {
                   fontWeight="regular"
                   opacity={0.8}
                   component={Link}
-                  href="https://www.creative-tim.com/blog"
+                  href="#experience"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Blog
+                  Experience
                 </MKTypography>
               </MKBox>
               <MKBox component="li">
@@ -94,27 +94,25 @@ function Footer() {
                   fontWeight="regular"
                   opacity={0.8}
                   component={Link}
-                  href="https://www.creative-tim.com"
+                  href="#contact"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Services
+                  Contact
                 </MKTypography>
               </MKBox>
             </Stack>
             <MKTypography variant="button" opacity={0.8}>
-              Copyright © <script>document.write(new Date().getFullYear())</script>2021 Material
-              Design by Creative Tim.
+              Copyright © {new Date().getFullYear()} Javier Garcia
             </MKTypography>
           </Grid>
           <Grid item xs={12} lg={6} ml="auto" textAlign={{ xs: "center", lg: "right" }}>
             <MKTypography variant="body1" fontWeight="bold" mb={6} sx={{ fontSize: "1.125rem" }}>
-              The reward for getting on the stage is fame. The price of fame is you can&apos;t get
-              off the stage.
+              "The only way to do great work is to love what you do." - Steve Jobs
             </MKTypography>
             <MKTypography
               component={Link}
-              href="#dribbble"
+              href="https://linkedin.com/in/javiergarcia"
               target="_blank"
               rel="noreferrer"
               variant="body2"
@@ -122,11 +120,23 @@ function Footer() {
               opacity={0.5}
               mr={3}
             >
-              <i className="fab fa-dribbble" />
+              <i className="fab fa-linkedin" />
             </MKTypography>
             <MKTypography
               component={Link}
-              href="#twitter"
+              href="https://github.com/javiergarcia"
+              target="_blank"
+              rel="noreferrer"
+              variant="body2"
+              color="dark"
+              opacity={0.5}
+              mr={3}
+            >
+              <i className="fab fa-github" />
+            </MKTypography>
+            <MKTypography
+              component={Link}
+              href="https://twitter.com/javiergarcia"
               target="_blank"
               rel="noreferrer"
               variant="body2"
@@ -138,26 +148,14 @@ function Footer() {
             </MKTypography>
             <MKTypography
               component={Link}
-              href="#pinterest"
-              target="_blank"
-              rel="noreferrer"
-              variant="body2"
-              color="dark"
-              opacity={0.5}
-              mr={3}
-            >
-              <i className="fab fa-pinterest" />
-            </MKTypography>
-            <MKTypography
-              component={Link}
-              href="#github"
+              href="https://instagram.com/javiergarcia"
               target="_blank"
               rel="noreferrer"
               variant="body2"
               color="dark"
               opacity={0.5}
             >
-              <i className="fab fa-github" />
+              <i className="fab fa-instagram" />
             </MKTypography>
           </Grid>
         </Grid>

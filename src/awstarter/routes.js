@@ -10,6 +10,7 @@ import Icon from "@mui/material/Icon";
 // @mui icons
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import EmailIcon from "@mui/icons-material/Email";
 
 // AWStarter pages
 import Home from "awstarter/pages/Home";
@@ -45,12 +46,17 @@ const routes = [
   {
     name: "github",
     icon: <GitHubIcon />,
-    href: "https://github.com/yourusername",
+    href: "https://github.com/JaviGG02/AWStarter",
   },
   {
     name: "linkedin",
     icon: <LinkedInIcon />,
-    href: "https://linkedin.com/in/yourusername",
+    href: "https://www.linkedin.com/in/javier-garcia-garcia-1ba311229/",
+  },
+  {
+    name: "contact",
+    icon: <EmailIcon />,
+    href: "mailto:awstarter@gmail.com",
   },
 ];
 

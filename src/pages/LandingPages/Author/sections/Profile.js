@@ -25,7 +25,7 @@ import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 // Images
-import profilePicture from "assets/images/bruce-mars.jpg";
+import profilePicture from "assets/images/team-2.jpg";
 
 function Profile() {
   return (
@@ -33,49 +33,49 @@ function Profile() {
       <Container>
         <Grid container item xs={12} justifyContent="center" mx="auto">
           <MKBox mt={{ xs: -16, md: -20 }} textAlign="center">
-            <MKAvatar src={profilePicture} alt="Burce Mars" size="xxl" shadow="xl" />
+            <MKAvatar src={profilePicture} alt="Javier Garcia" size="xxl" shadow="xl" />
           </MKBox>
           <Grid container justifyContent="center" py={6}>
             <Grid item xs={12} md={7} mx={{ xs: "auto", sm: 6, md: 1 }}>
               <MKBox display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-                <MKTypography variant="h3">Michael Roven</MKTypography>
-                <MKButton variant="outlined" color="info" size="small">
-                  Follow
+                <MKTypography variant="h3">Javier Garcia</MKTypography>
+                <MKButton variant="outlined" color="info" size="small" href="mailto:javier.garcia@example.com">
+                  Contact
                 </MKButton>
               </MKBox>
               <Grid container spacing={3} mb={3}>
                 <Grid item>
                   <MKTypography component="span" variant="body2" fontWeight="bold">
-                    323&nbsp;
+                    5+ years&nbsp;
                   </MKTypography>
                   <MKTypography component="span" variant="body2" color="text">
-                    Posts
+                    Experience
                   </MKTypography>
                 </Grid>
                 <Grid item>
                   <MKTypography component="span" variant="body2" fontWeight="bold">
-                    3.5k&nbsp;
+                    Full Stack&nbsp;
                   </MKTypography>
                   <MKTypography component="span" variant="body2" color="text">
-                    Followers
+                    Developer
                   </MKTypography>
                 </Grid>
                 <Grid item>
                   <MKTypography component="span" variant="body2" fontWeight="bold">
-                    260&nbsp;
+                    React & Node.js&nbsp;
                   </MKTypography>
                   <MKTypography component="span" variant="body2" color="text">
-                    Following
+                    Specialist
                   </MKTypography>
                 </Grid>
               </Grid>
               <MKTypography variant="body1" fontWeight="light" color="text">
-                Decisions: If you can&apos;t decide, the answer is no. If two equally difficult
-                paths, choose the one more painful in the short term (pain avoidance is creating an
-                illusion of equality). Choose the path that leaves you more equanimous. <br />
+                Passionate software engineer with expertise in full-stack development, specializing in React, Node.js, and cloud technologies. Experienced in building scalable web applications and implementing efficient solutions for complex problems.
+                <br />
                 <MKTypography
                   component="a"
-                  href="#"
+                  href="/assets/JavierGarcia-CV.pdf"
+                  target="_blank"
                   variant="body1"
                   fontWeight="light"
                   color="info"
@@ -95,7 +95,7 @@ function Profile() {
                     },
                   }}
                 >
-                  More about me <Icon sx={{ fontWeight: "bold" }}>arrow_forward</Icon>
+                  Download CV <Icon sx={{ fontWeight: "bold" }}>arrow_forward</Icon>
                 </MKTypography>
               </MKTypography>
             </Grid>

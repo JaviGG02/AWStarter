@@ -1,0 +1,24 @@
+schemaVersion: 2.0.0
+metadata:
+  name: material-kit-2-react
+  version: 2.1.0
+  displayName: Material Kit 2 React
+  description: React version of Material Kit 2 by Creative Tim
+components:
+  - name: dev
+    container:
+      image: public.ecr.aws/aws-mde/universal-image:latest
+      memoryLimit: 4Gi
+commands:
+  - id: install
+    exec:
+      component: dev
+      commandLine: "npm install"
+  - id: build
+    exec:
+      component: dev
+      commandLine: "npm run build"
+  - id: test
+    exec:
+      component: dev
+      commandLine: "npm run test"

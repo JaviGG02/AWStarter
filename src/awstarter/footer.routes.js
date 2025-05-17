@@ -1,8 +1,7 @@
 // @mui icons
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import EmailIcon from "@mui/icons-material/Email";
 
 // Material Kit 2 React components
 import MKTypography from "components/MKTypography";
@@ -20,20 +19,16 @@ export default {
   },
   socials: [
     {
-      icon: <FacebookIcon />,
-      link: "https://www.facebook.com/yourusername",
-    },
-    {
-      icon: <TwitterIcon />,
-      link: "https://twitter.com/yourusername",
-    },
-    {
       icon: <GitHubIcon />,
-      link: "https://github.com/yourusername",
+      link: "https://github.com/JaviGG02/AWStarter",
     },
     {
       icon: <LinkedInIcon />,
-      link: "https://www.linkedin.com/in/yourusername",
+      link: "https://www.linkedin.com/in/javier-garcia-garcia-1ba311229/",
+    },
+    {
+      icon: <EmailIcon />,
+      link: "mailto:awstarter@gmail.com",
     },
   ],
   menus: [
@@ -58,26 +53,19 @@ export default {
     {
       name: "contact",
       items: [
-        { name: "email", href: "mailto:your.email@example.com" },
-        { name: "linkedin", href: "https://www.linkedin.com/in/yourusername" },
-        { name: "twitter", href: "https://twitter.com/yourusername" },
+        { name: "email", href: "mailto:awstarter@gmail.com" },
+        { name: "linkedin", href: "https://www.linkedin.com/in/javier-garcia-garcia-1ba311229/" },
+        { name: "github", href: "https://github.com/JaviGG02/AWStarter" },
       ],
     },
   ],
   copyright: (
-    <MKTypography variant="button" fontWeight="regular">
-      All rights reserved. Copyright &copy; {date} AWStarter by{" "}
-      <MKTypography
-        component="a"
-        href="/awstarter/author"
-        target="_blank"
-        rel="noreferrer"
-        variant="button"
-        fontWeight="regular"
-      >
-        Your Name
-      </MKTypography>
+    <>
+      All rights reserved. Copyright © {date} AWStarter by{" "}
+      <a href="https://aws.amazon.com/" target="_blank" rel="noreferrer">
+        AWS Enthusiast
+      </a>
       .
-    </MKTypography>
+    </>
   ),
 };

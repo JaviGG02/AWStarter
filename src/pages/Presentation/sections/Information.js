@@ -27,7 +27,7 @@ import RotatingCardBack from "examples/Cards/RotatingCard/RotatingCardBack";
 import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
 
 // Images
-import bgFront from "assets/images/rotating-card-bg-front.jpeg";
+import bgFront from "assets/images/bg-presentation.jpg";
 import bgBack from "assets/images/rotating-card-bg-back.jpeg";
 
 function Information() {
