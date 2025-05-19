@@ -63,7 +63,11 @@ export default {
     <>
       All rights reserved. Copyright © {date} AWStarter by{" "}
       <a href="https://aws.amazon.com/" target="_blank" rel="noreferrer">
-        AWS Enthusiast
+        Javier Garcia
+      </a>
+      . Created using{" "}
+      <a href="https://www.creative-tim.com/product/material-kit-react" target="_blank" rel="noreferrer">
+        MK Template
       </a>
       .
     </>

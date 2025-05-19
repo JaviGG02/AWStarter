@@ -49,6 +49,7 @@ function MKNavbar({ brand, routes, transparent = false, light = false }) {
 
   // Render the routes for the navigation
   const renderRoutes = routes.map(({ name, icon, route, href }) => {
+    if (route == "/awstarter/blog/:slug") return;
     const routeComponent = {
       component: Link,
       to: route,

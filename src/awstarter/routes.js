@@ -16,6 +16,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import Home from "awstarter/pages/Home";
 import Author from "awstarter/pages/Author";
 import Blog from "awstarter/pages/Blog";
+import BlogPostPage from "awstarter/pages/Blog/BlogPostPage";
 import Architecture from "awstarter/pages/Architecture";
 
 const routes = [
@@ -36,6 +37,11 @@ const routes = [
     icon: <Icon>article</Icon>,
     route: "/awstarter/blog",
     component: <Blog />,
+  },
+  {
+    name: "Blog Post",
+    route: "/awstarter/blog/:slug",
+    component: <BlogPostPage />,
   },
   {
     name: "architecture",

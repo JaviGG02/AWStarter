@@ -41,7 +41,7 @@ import routes from "awstarter/routes";
 import footerRoutes from "awstarter/footer.routes";
 
 // Images
-import bgImage from "assets/images/bg-about-us.jpg";
+import bgImage from "assets/images/bg-presentation.jpg";
 
 function Author() {
   return (
@@ -62,7 +62,7 @@ function Author() {
                 rgba(gradients.dark.main, 0.6),
                 rgba(gradients.dark.state, 0.6)
               )}, url(${bgImage})`,
-            backgroundSize: "cover",
+            // backgroundSize: "cover",
             backgroundPosition: "center",
             display: "grid",
             placeItems: "center",

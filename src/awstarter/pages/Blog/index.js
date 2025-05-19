@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // @mui material components
 import Container from "@mui/material/Container";
@@ -8,10 +8,9 @@ import Card from "@mui/material/Card";
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
-import MKButton from "components/MKButton";
 
 // Material Kit 2 React examples
-import DefaultNavbar from "examples/Navbars/DefaultNavbar";
+import MKNavbar from "components/MKNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // Routes
@@ -21,79 +20,111 @@ import footerRoutes from "awstarter/footer.routes";
 // Images
 import bgImage from "assets/images/bg-presentation.jpg";
 
-// Blog post component
-function BlogPost({ title, date, excerpt, image, link }) {
-  return (
-    <Card sx={{ mb: 3, overflow: "hidden" }}>
-      <Grid container>
-        <Grid item xs={12} md={4}>
-          <MKBox
-            component="img"
-            src={image}
-            alt={title}
-            width="100%"
-            height="100%"
-            sx={{ objectFit: "cover" }}
-          />
-        </Grid>
-        <Grid item xs={12} md={8}>
-          <MKBox p={3}>
-            <MKTypography variant="h4" mb={1}>
-              {title}
-            </MKTypography>
-            <MKTypography variant="body2" color="text" mb={2}>
-              {date}
-            </MKTypography>
-            <MKTypography variant="body1" color="text" mb={2}>
-              {excerpt}
-            </MKTypography>
-            <MKButton variant="text" color="info" component="a" href={link}>
-              Read More
-            </MKButton>
-          </MKBox>
-        </Grid>
-      </Grid>
-    </Card>
-  );
-}
+// Blog components
+import BlogPost from "./BlogPost";
 
 function Blog() {
-  // Sample blog posts data
-  const blogPosts = [
-    {
-      title: "Serverless Architecture: The Future of Cloud Computing",
-      date: "June 15, 2023",
-      excerpt: "Explore how serverless architecture is transforming the way we build and deploy applications in the cloud. Learn about the benefits, challenges, and best practices for implementing serverless solutions on AWS.",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2034&q=80",
-      link: "/awstarter/blog/serverless-architecture",
-    },
-    {
-      title: "Optimizing AWS Costs: Strategies for Efficient Cloud Spending",
-      date: "May 22, 2023",
-      excerpt: "Discover practical strategies to optimize your AWS costs without compromising performance or reliability. This post covers tools, techniques, and best practices for efficient cloud spending.",
-      image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
-      link: "/awstarter/blog/optimizing-aws-costs",
-    },
-    {
-      title: "Containerization with AWS ECS and EKS: A Comparative Analysis",
-      date: "April 10, 2023",
-      excerpt: "Compare AWS Elastic Container Service (ECS) and Elastic Kubernetes Service (EKS) to determine which container orchestration solution is right for your workloads. Learn about the pros, cons, and use cases for each service.",
-      image: "https://images.unsplash.com/photo-1605745341112-85968b19335b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
-      link: "/awstarter/blog/containerization-ecs-eks",
-    },
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // List of blog post directories to fetch
+  const blogPostSlugs = [
+    "serverless-architecture",
+    "optimizing-aws-costs",
+    "containerization-ecs-eks"
   ];
+
+  useEffect(() => {
+    // Function to fetch and parse a markdown file
+    const fetchMarkdownFile = async (slug) => {
+      try {
+        const response = await fetch(`/blog-content/${slug}/post.md`);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch blog post: ${response.status}`);
+        }
+        
+        const markdownContent = await response.text();
+        
+        // Parse front matter from markdown
+        const frontMatterRegex = /^---\n([\s\S]*?)\n---\n/;
+        const frontMatterMatch = markdownContent.match(frontMatterRegex);
+        
+        let frontMatter = {};
+        let content = markdownContent;
+        
+        if (frontMatterMatch) {
+          // Extract and parse front matter
+          const frontMatterText = frontMatterMatch[1];
+          frontMatterText.split('\n').forEach(line => {
+            const [key, ...valueParts] = line.split(':');
+            if (key && valueParts.length) {
+              const value = valueParts.join(':').trim();
+              frontMatter[key.trim()] = value;
+            }
+          });
+          
+          // Remove front matter from content
+          content = markdownContent.replace(frontMatterRegex, '');
+        }
+        
+        // Extract excerpt from content (first paragraph after front matter)
+        const excerptMatch = content.trim().match(/^(.*?)(?:\n\n|\n#)/s);
+        const excerpt = excerptMatch ? excerptMatch[1].trim() : content.substring(0, 150) + "...";
+        
+        return {
+          title: frontMatter.title || "Untitled Post",
+          date: frontMatter.date || "",
+          excerpt: excerpt,
+          image: frontMatter.featured_image || "",
+          link: `/awstarter/blog/${slug}`,
+          folder: slug,
+          markdownFile: "post.md",
+          author: frontMatter.author || "",
+          tags: frontMatter.tags ? frontMatter.tags.replace(/[\[\]]/g, '').split(',').map(tag => tag.trim()) : []
+        };
+      } catch (err) {
+        console.error(`Error fetching blog post ${slug}:`, err);
+        return null;
+      }
+    };
+
+    // Fetch all blog posts
+    const fetchAllPosts = async () => {
+      try {
+        const postsPromises = blogPostSlugs.map(slug => fetchMarkdownFile(slug));
+        const posts = await Promise.all(postsPromises);
+        
+        // Filter out any null results (failed fetches)
+        const validPosts = posts.filter(post => post !== null);
+        
+        // Sort posts by date (newest first)
+        validPosts.sort((a, b) => {
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          return dateB - dateA;
+        });
+        
+        setBlogPosts(validPosts);
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching blog posts:", err);
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchAllPosts();
+  }, []);
 
   return (
     <>
-      <DefaultNavbar
+      <MKNavbar
+        brand="AWStarter"
         routes={routes}
-        action={{
-          type: "internal",
-          route: "/awstarter/home",
-          label: "Home",
-          color: "info",
-        }}
-        sticky
+        transparent
+        light
       />
       <MKBox
         minHeight="40vh"
@@ -150,9 +181,19 @@ function Blog() {
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={12} md={8}>
-              {blogPosts.map((post, index) => (
-                <BlogPost key={index} {...post} />
-              ))}
+              {loading ? (
+                <MKTypography variant="body1">Loading blog posts...</MKTypography>
+              ) : error ? (
+                <MKTypography variant="body1" color="error">
+                  Error loading blog posts: {error}
+                </MKTypography>
+              ) : blogPosts.length === 0 ? (
+                <MKTypography variant="body1">No blog posts found.</MKTypography>
+              ) : (
+                blogPosts.map((post, index) => (
+                  <BlogPost key={index} {...post} />
+                ))
+              )}
             </Grid>
             <Grid item xs={12} md={4}>
               <Card sx={{ p: 3, mb: 3 }}>
