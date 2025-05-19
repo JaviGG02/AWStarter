@@ -4,6 +4,7 @@ date: June 15, 2023
 author: AWS Expert
 tags: [serverless, aws, cloud-computing, lambda]
 featured_image: https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2034&q=80
+excerpt: Serverless architecture is a cloud computing execution model where the cloud provider dynamically manages the allocation and provisioning of servers, allowing developers to focus on code rather than infrastructure.
 ---
 
 # Serverless Architecture: The Future of Cloud Computing

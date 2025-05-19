@@ -30,7 +30,9 @@ function BlogPostPage() {
     date: "",
     author: "",
     content: "",
+    excerpt: "",
     image: "",
+    tags: [],
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -69,11 +71,19 @@ function BlogPostPage() {
           content = markdownContent.replace(frontMatterRegex, '');
         }
         
+        // Use the excerpt from front matter if available, otherwise generate one
+        let excerpt = frontMatter.excerpt;
+        if (!excerpt) {
+          const excerptMatch = content.trim().match(/^(.*?)(?:\n\n|\n#)/s);
+          excerpt = excerptMatch ? excerptMatch[1].trim() : content.substring(0, 150) + "...";
+        }
+        
         setPost({
           title: frontMatter.title || "Untitled Post",
           date: frontMatter.date || "",
           author: frontMatter.author || "",
           content: content,
+          excerpt: excerpt,
           image: frontMatter.featured_image || "",
           tags: frontMatter.tags ? frontMatter.tags.replace(/[\[\]]/g, '').split(',').map(tag => tag.trim()) : []
         });
@@ -90,6 +100,7 @@ function BlogPostPage() {
           date: "",
           author: "",
           content: "The requested blog post could not be found.",
+          excerpt: "",
           image: "",
           tags: []
         });
@@ -186,6 +197,21 @@ function BlogPostPage() {
             >
               {post.title}
             </MKTypography>
+            {post.excerpt && (
+              <MKTypography
+                variant="subtitle1"
+                color="white"
+                textAlign="center"
+                px={{ xs: 6, lg: 12 }}
+                mb={1}
+                sx={{
+                  fontStyle: "italic",
+                  textShadow: "0px 1px 2px rgba(0,0,0,0.6)",
+                }}
+              >
+                {post.excerpt}
+              </MKTypography>
+            )}
             <MKTypography
               variant="body1"
               color="white"

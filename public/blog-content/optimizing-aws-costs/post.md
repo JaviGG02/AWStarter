@@ -4,6 +4,7 @@ date: May 22, 2023
 author: Cloud Economist
 tags: [aws, cost-optimization, cloud-spending, savings]
 featured_image: https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80
+excerpt: Learn practical strategies to optimize your AWS cloud spending without compromising performance or reliability, from right-sizing resources to implementing cost governance.
 ---
 
 # Optimizing AWS Costs: Strategies for Efficient Cloud Spending

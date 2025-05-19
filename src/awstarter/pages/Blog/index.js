@@ -4,14 +4,20 @@ import React, { useState, useEffect } from "react";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+import Icon from "@mui/material/Icon";
+import Box from "@mui/material/Box";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
+import MKButton from "components/MKButton";
 
 // Material Kit 2 React examples
 import MKNavbar from "components/MKNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
+import CenteredFooter from "examples/Footers/CenteredFooter";
 
 // Routes
 import routes from "awstarter/routes";
@@ -22,11 +28,16 @@ import bgImage from "assets/images/bg-presentation.jpg";
 
 // Blog components
 import BlogPost from "./BlogPost";
+import FeaturedPost from "./FeaturedPost";
+import TopicBox from "./TopicBox";
 
 function Blog() {
   const [blogPosts, setBlogPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [uniqueTags, setUniqueTags] = useState([]);
 
   // List of blog post directories to fetch
   const blogPostSlugs = [
@@ -69,9 +80,12 @@ function Blog() {
           content = markdownContent.replace(frontMatterRegex, '');
         }
         
-        // Extract excerpt from content (first paragraph after front matter)
-        const excerptMatch = content.trim().match(/^(.*?)(?:\n\n|\n#)/s);
-        const excerpt = excerptMatch ? excerptMatch[1].trim() : content.substring(0, 150) + "...";
+        // Use the excerpt from front matter if available, otherwise generate one
+        let excerpt = frontMatter.excerpt;
+        if (!excerpt) {
+          const excerptMatch = content.trim().match(/^(.*?)(?:\n\n|\n#)/s);
+          excerpt = excerptMatch ? excerptMatch[1].trim() : content.substring(0, 150) + "...";
+        }
         
         return {
           title: frontMatter.title || "Untitled Post",
@@ -82,7 +96,8 @@ function Blog() {
           folder: slug,
           markdownFile: "post.md",
           author: frontMatter.author || "",
-          tags: frontMatter.tags ? frontMatter.tags.replace(/[\[\]]/g, '').split(',').map(tag => tag.trim()) : []
+          tags: frontMatter.tags ? frontMatter.tags.replace(/[\[\]]/g, '').split(',').map(tag => tag.trim()) : [],
+          content: content // Include content for search functionality
         };
       } catch (err) {
         console.error(`Error fetching blog post ${slug}:`, err);
@@ -107,6 +122,13 @@ function Blog() {
         });
         
         setBlogPosts(validPosts);
+        setFilteredPosts(validPosts);
+        
+        // Extract unique tags from all posts
+        const allTags = validPosts.flatMap(post => post.tags);
+        const uniqueTagsSet = new Set(allTags);
+        setUniqueTags(Array.from(uniqueTagsSet));
+        
         setLoading(false);
       } catch (err) {
         console.error("Error fetching blog posts:", err);
@@ -117,6 +139,41 @@ function Blog() {
 
     fetchAllPosts();
   }, []);
+
+  // Handle search functionality
+  useEffect(() => {
+    if (searchQuery.trim() === "") {
+      setFilteredPosts(blogPosts);
+      return;
+    }
+
+    const query = searchQuery.toLowerCase();
+    const filtered = blogPosts.filter(post => {
+      const titleMatch = post.title.toLowerCase().includes(query);
+      const tagMatch = post.tags.some(tag => tag.toLowerCase().includes(query));
+      const excerptMatch = post.excerpt.toLowerCase().includes(query);
+      
+      return titleMatch || tagMatch || excerptMatch;
+    });
+    
+    setFilteredPosts(filtered);
+  }, [searchQuery, blogPosts]);
+
+  // Handle topic filter
+  const handleTopicFilter = (tag) => {
+    if (tag === "all") {
+      setFilteredPosts(blogPosts);
+      setSearchQuery("");
+      return;
+    }
+    
+    const filtered = blogPosts.filter(post => 
+      post.tags.some(postTag => postTag.toLowerCase() === tag.toLowerCase())
+    );
+    
+    setFilteredPosts(filtered);
+    setSearchQuery(`${tag}`);
+  };
 
   return (
     <>
@@ -179,18 +236,101 @@ function Blog() {
         }}
       >
         <Container>
+          {/* Search Bar */}
+          <MKBox mb={4}>
+            <TextField
+              fullWidth
+              placeholder="Search blog posts by title, content, or tags..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Icon>search</Icon>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </MKBox>
+
+          {/* Topic Boxes */}
+          <MKBox mb={4}>
+            <MKTypography variant="h4" mb={2}>
+              Topics
+            </MKTypography>
+            <Grid container spacing={2}>
+              <Grid item xs={6} sm={4} md={3} lg={2}>
+                <TopicBox 
+                  title="All Posts" 
+                  icon="article" 
+                  onClick={() => handleTopicFilter("all")} 
+                />
+              </Grid>
+              {uniqueTags.map((tag, index) => (
+                <Grid item xs={6} sm={4} md={3} lg={2} key={index}>
+                  <TopicBox 
+                    title={tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ')} 
+                    icon={tag.includes('serverless') ? 'cloud' : 
+                          tag.includes('aws') ? 'storage' :
+                          tag.includes('container') ? 'view_in_ar' : 'code'}
+                    onClick={() => handleTopicFilter(tag)} 
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </MKBox>
+
+          {/* Featured Posts Section */}
+          {!loading && !error && filteredPosts.length > 0 && searchQuery === "" && (
+            <MKBox mb={4}>
+              <MKTypography variant="h4" mb={2}>
+                Featured Posts
+              </MKTypography>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
+                  <FeaturedPost {...filteredPosts[0]} featured={true} />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Grid container spacing={2}>
+                    {filteredPosts.slice(1, 3).map((post, index) => (
+                      <Grid item xs={12} key={index}>
+                        <FeaturedPost {...post} compact={true} />
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Grid>
+              </Grid>
+            </MKBox>
+          )}
+
           <Grid container spacing={3}>
             <Grid item xs={12} md={8}>
+              {/* Search Results or All Posts */}
+              <MKBox mb={3}>
+                {searchQuery && (
+                  <MKTypography variant="h5" mb={2}>
+                    {filteredPosts.length === 0 
+                      ? "No posts found matching your search" 
+                      : `Found ${filteredPosts.length} post${filteredPosts.length !== 1 ? 's' : ''} matching "${searchQuery}"`}
+                  </MKTypography>
+                )}
+                {!searchQuery && (
+                  <MKTypography variant="h5" mb={2}>
+                    All Posts
+                  </MKTypography>
+                )}
+              </MKBox>
+
               {loading ? (
                 <MKTypography variant="body1">Loading blog posts...</MKTypography>
               ) : error ? (
                 <MKTypography variant="body1" color="error">
                   Error loading blog posts: {error}
                 </MKTypography>
-              ) : blogPosts.length === 0 ? (
+              ) : filteredPosts.length === 0 ? (
                 <MKTypography variant="body1">No blog posts found.</MKTypography>
               ) : (
-                blogPosts.map((post, index) => (
+                filteredPosts.map((post, index) => (
                   <BlogPost key={index} {...post} />
                 ))
               )}
@@ -201,61 +341,23 @@ function Blog() {
                   Categories
                 </MKTypography>
                 <MKBox component="ul" p={0} m={0} sx={{ listStyle: "none" }}>
-                  <MKBox component="li" mb={1}>
-                    <MKTypography
-                      component="a"
-                      href="#"
-                      variant="button"
-                      color="info"
-                      fontWeight="regular"
-                    >
-                      AWS Services
-                    </MKTypography>
-                  </MKBox>
-                  <MKBox component="li" mb={1}>
-                    <MKTypography
-                      component="a"
-                      href="#"
-                      variant="button"
-                      color="info"
-                      fontWeight="regular"
-                    >
-                      Serverless
-                    </MKTypography>
-                  </MKBox>
-                  <MKBox component="li" mb={1}>
-                    <MKTypography
-                      component="a"
-                      href="#"
-                      variant="button"
-                      color="info"
-                      fontWeight="regular"
-                    >
-                      DevOps
-                    </MKTypography>
-                  </MKBox>
-                  <MKBox component="li" mb={1}>
-                    <MKTypography
-                      component="a"
-                      href="#"
-                      variant="button"
-                      color="info"
-                      fontWeight="regular"
-                    >
-                      Cloud Architecture
-                    </MKTypography>
-                  </MKBox>
-                  <MKBox component="li">
-                    <MKTypography
-                      component="a"
-                      href="#"
-                      variant="button"
-                      color="info"
-                      fontWeight="regular"
-                    >
-                      Best Practices
-                    </MKTypography>
-                  </MKBox>
+                  {uniqueTags.map((tag, index) => (
+                    <MKBox component="li" mb={index < uniqueTags.length - 1 ? 1 : 0} key={index}>
+                      <MKTypography
+                        component="a"
+                        href="#"
+                        variant="button"
+                        color="info"
+                        fontWeight="regular"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleTopicFilter(tag);
+                        }}
+                      >
+                        {tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ')}
+                      </MKTypography>
+                    </MKBox>
+                  ))}
                 </MKBox>
               </Card>
               <Card sx={{ p: 3 }}>

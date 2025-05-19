@@ -1,9 +1,10 @@
 ---
 title: Containerization with AWS ECS and EKS: A Comparative Analysis
-date: April 10, 2023
+date: April 10, 2024
 author: Container Specialist
 tags: [aws, containers, ecs, eks, kubernetes, docker]
 featured_image: https://images.unsplash.com/photo-1605745341112-85968b19335b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80
+excerpt: Compare AWS Elastic Container Service (ECS) and Elastic Kubernetes Service (EKS) to determine which container orchestration platform best suits your application needs and team expertise.
 ---
 
 # Containerization with AWS ECS and EKS: A Comparative Analysis
