@@ -59,7 +59,7 @@ function Experience() {
             <MKTypography variant="h3" mb={1}>
               Work Experience
             </MKTypography>
-            <MKTypography variant="body2" color="text">
+            <MKTypography variant="body1" fontWeight="light" color="text" mb={0}>
               My professional journey and accomplishments
             </MKTypography>
           </Grid>

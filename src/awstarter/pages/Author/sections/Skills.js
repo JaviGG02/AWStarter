@@ -103,7 +103,7 @@ function Skills() {
             <MKTypography variant="h3" mb={1}>
               Technical Skills
             </MKTypography>
-            <MKTypography variant="body2" color="text">
+            <MKTypography variant="body1" fontWeight="light" color="text" mb={0}>
               A comprehensive list of my cloud and technical competencies
             </MKTypography>
           </Grid>

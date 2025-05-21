@@ -56,8 +56,8 @@ function Education() {
             <MKTypography variant="h3" mb={1}>
               Education
             </MKTypography>
-            <MKTypography variant="body2" color="text">
-              Academic background and certifications
+            <MKTypography variant="body1" fontWeight="light" color="text" mb={0}>
+              Academic background and other courses
             </MKTypography>
           </Grid>
         </Grid>

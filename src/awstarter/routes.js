@@ -18,6 +18,7 @@ import Author from "awstarter/pages/Author";
 import Blog from "awstarter/pages/Blog";
 import BlogPostPage from "awstarter/pages/Blog/BlogPostPage";
 import Architecture from "awstarter/pages/Architecture";
+import Roadmap from "awstarter/pages/Roadmap";
 
 const routes = [
   {
@@ -50,6 +51,12 @@ const routes = [
     component: <Architecture />,
   },
   {
+    name: "roadmap",
+    icon: <Icon>map</Icon>,
+    route: "/pages/roadmap",
+    component: <Roadmap />,
+  },
+  {
     name: "github",
     icon: <GitHubIcon />,
     href: "https://github.com/JaviGG02/AWStarter",
@@ -58,12 +65,7 @@ const routes = [
     name: "linkedin",
     icon: <LinkedInIcon />,
     href: "https://www.linkedin.com/in/javier-garcia-garcia-1ba311229/",
-  },
-  {
-    name: "contact",
-    icon: <EmailIcon />,
-    href: "mailto:awstarter@gmail.com",
-  },
+  }
 ];
 
 export default routes;

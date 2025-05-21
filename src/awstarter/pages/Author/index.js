@@ -41,7 +41,7 @@ import routes from "awstarter/routes";
 import footerRoutes from "awstarter/footer.routes";
 
 // Images
-import bgImage from "assets/images/bg-presentation.jpg";
+import bgImage from "assets/images/banner-author.png";
 
 function Author() {
   return (
@@ -54,7 +54,7 @@ function Author() {
       />
       <MKBox bgColor="white">
         <MKBox
-          minHeight="30rem"
+          minHeight="40rem"
           width="100%"
           sx={{
             backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>

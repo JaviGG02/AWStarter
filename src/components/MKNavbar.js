@@ -67,7 +67,7 @@ function MKNavbar({ brand, routes, transparent = false, light = false }) {
         key={name}
         {...(route ? routeComponent : linkComponent)}
         variant="text"
-        color={(light || isOverDarkBg) && !trigger ? "white" : "dark"}
+        color={transparent ? "dark" : (light || isOverDarkBg) && !trigger ? "white" : "dark"}
         sx={{
           fontWeight: "regular",
           fontSize: "0.875rem",
@@ -96,7 +96,7 @@ function MKNavbar({ brand, routes, transparent = false, light = false }) {
       sx={{
         boxShadow: trigger ? "0 4px 18px 0px rgba(0,0,0,0.12)" : "none",
         backdropFilter: trigger ? "saturate(200%) blur(30px)" : "none",
-        backgroundColor: trigger ? "rgba(255,255,255,0.9)" : transparent ? "transparent" : "rgba(255,255,255,0.9)",
+        backgroundColor: trigger ? "rgba(255,255,255,0.9)" : transparent ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.9)",
         color: (light || isOverDarkBg) && !trigger ? "white" : "inherit",
         top: visible ? 0 : "-80px",
         transition: "top 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
@@ -121,7 +121,7 @@ function MKNavbar({ brand, routes, transparent = false, light = false }) {
             <MKTypography
               variant="button"
               fontWeight="bold"
-              color={(light || isOverDarkBg) && !trigger ? "white" : "dark"}
+              color={transparent ? "dark" : (light || isOverDarkBg) && !trigger ? "white" : "dark"}
               sx={{ fontSize: "1.125rem" }}
             >
               {brand}
@@ -138,7 +138,7 @@ function MKNavbar({ brand, routes, transparent = false, light = false }) {
           <MKBox display={{ xs: "inline-block", md: "none" }}>
             <IconButton
               onClick={openMobileMenu}
-              sx={{ color: (light || isOverDarkBg) && !trigger ? "white" : "inherit" }}
+              sx={{ color: transparent ? "dark" : (light || isOverDarkBg) && !trigger ? "white" : "inherit" }}
             >
               <Icon>menu</Icon>
             </IconButton>

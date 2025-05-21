@@ -37,10 +37,10 @@ function Profile() {
           </MKBox>
           <Grid container justifyContent="center" >
             <Grid>
-              <MKBox display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+              <MKBox display="flex" justifyContent="space-between" alignItems="center" mb={2}>
                 <MKTypography variant="h3">About Me</MKTypography>
               </MKBox>
-              <MKTypography variant="body1" fontWeight="light" color="text" mb={4}>
+              <MKTypography variant="body1" fontWeight="light" color="text" mb={0}>
                 My main field of knowledge is computers and technology. I look forward to be constantly learning about different topics, especially Cloud and Containers. 
                 I am a very active person and enjoy social interactions. I am good at establishing new relationships and public speaking events.
               </MKTypography>
