@@ -19,7 +19,7 @@ import routes from "awstarter/routes";
 import footerRoutes from "awstarter/footer.routes";
 
 // Images
-import bgImage from "assets/images/bg-presentation.jpg";
+import bgImage from "assets/images/serverless.png";
 
 // Define the spinning animation
 const spin = keyframes`

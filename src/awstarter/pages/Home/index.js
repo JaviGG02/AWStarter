@@ -75,7 +75,7 @@ function Home() {
                 <Grid item xs={22} lg={6}>
                   {/* Introduction Section */}
                   <MKTypography variant="h3" mb={3}>
-                    Welcome to Javier Garcia's Tech Hub
+                    Welcome to AWStarter Tech Hub
                   </MKTypography>
                   <MKTypography variant="body1" color="text" mb={4}>
                     This is my personal project — a space where I share my journey, experiences, and insights as a cloud enthusiast and Amazon team member. Here, I post blogs about cloud computing, AWS services, tips for landing a job at Amazon, and what life is really like inside one of the world's leading tech companies. Whether you're starting out or already deep in your tech career, I invite you to explore, learn, and grow with me.
@@ -165,7 +165,7 @@ function Home() {
                             Community Hub
                           </MKTypography>
                           <MKTypography variant="body2" color="text">
-                            A collaborative space where contributors can share insights and grow their personal brand. Join us to network, mentor, and connect with fellow tech enthusiasts.
+                            A collaborative space where contributors can share insights and publish technical or career development related topics. Join me to network, mentor, and connect with fellow tech enthusiasts.
                           </MKTypography>
                         </MKBox>
                       </motion.div>

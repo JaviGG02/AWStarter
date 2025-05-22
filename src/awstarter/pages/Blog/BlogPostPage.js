@@ -21,7 +21,7 @@ import routes from "awstarter/routes";
 import footerRoutes from "awstarter/footer.routes";
 
 // Images
-import bgImage from "assets/images/bg-presentation.jpg";
+import bgImage from "assets/images/containarization.png";
 
 function BlogPostPage() {
   const { slug } = useParams();

@@ -24,7 +24,7 @@ import routes from "awstarter/routes";
 import footerRoutes from "awstarter/footer.routes";
 
 // Images
-import bgImage from "assets/images/bg-presentation.jpg";
+import bgImage from "assets/images/containarization.png";
 
 // Blog components
 import BlogPost from "./BlogPost";
@@ -237,7 +237,7 @@ function Blog() {
       >
         <Container>
           {/* Search Bar */}
-          <MKBox mb={4}>
+          <MKBox mt={4} mb={4} sx={{ maxWidth: "1000px", mx: "auto" }}>
             <TextField
               fullWidth
               placeholder="Search blog posts by title, content, or tags..."
@@ -249,8 +249,15 @@ function Blog() {
                     <Icon>search</Icon>
                   </InputAdornment>
                 ),
+                sx: {
+                  fontSize: "1.2rem",
+                  padding: "12px 14px",
+                  "& input": {
+                    padding: "8px 0",
+                  }
+                }
               }}
-            />
+            ></TextField>
           </MKBox>
 
           {/* Topic Boxes */}
@@ -258,25 +265,49 @@ function Blog() {
             <MKTypography variant="h4" mb={2}>
               Topics
             </MKTypography>
-            <Grid container spacing={2}>
-              <Grid item xs={6} sm={4} md={3} lg={2}>
+            <Grid container spacing={2} justifyContent="center">
+              <Grid item xs={6} sm={4} md={2}>
                 <TopicBox 
                   title="All Posts" 
                   icon="article" 
                   onClick={() => handleTopicFilter("all")} 
                 />
               </Grid>
-              {uniqueTags.map((tag, index) => (
-                <Grid item xs={6} sm={4} md={3} lg={2} key={index}>
-                  <TopicBox 
-                    title={tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ')} 
-                    icon={tag.includes('serverless') ? 'cloud' : 
-                          tag.includes('aws') ? 'storage' :
-                          tag.includes('container') ? 'view_in_ar' : 'code'}
-                    onClick={() => handleTopicFilter(tag)} 
-                  />
-                </Grid>
-              ))}
+              <Grid item xs={6} sm={4} md={2}>
+                <TopicBox 
+                  title="AWS" 
+                  icon="storage" 
+                  onClick={() => handleTopicFilter("aws")} 
+                />
+              </Grid>
+              <Grid item xs={6} sm={4} md={2}>
+                <TopicBox 
+                  title="Career" 
+                  icon="work" 
+                  onClick={() => handleTopicFilter("career")} 
+                />
+              </Grid>
+              <Grid item xs={6} sm={4} md={2}>
+                <TopicBox 
+                  title="Containers" 
+                  icon="view_in_ar" 
+                  onClick={() => handleTopicFilter("containers")} 
+                />
+              </Grid>
+              <Grid item xs={6} sm={4} md={2}>
+                <TopicBox 
+                  title="Serverless" 
+                  icon="cloud" 
+                  onClick={() => handleTopicFilter("serverless")} 
+                />
+              </Grid>
+              <Grid item xs={6} sm={4} md={2}>
+                <TopicBox 
+                  title="Development" 
+                  icon="code" 
+                  onClick={() => handleTopicFilter("development")} 
+                />
+              </Grid>
             </Grid>
           </MKBox>
 
