@@ -1,7 +1,7 @@
 /**
- * AWStarter Routes
+ * CloudStart Routes
  * 
- * This file contains all the routes for the AWStarter application.
+ * This file contains all the routes for the CloudStart application.
  */
 
 // @mui material components
@@ -12,42 +12,42 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
 
-// AWStarter pages
-import Home from "awstarter/pages/Home";
-import Author from "awstarter/pages/Author";
-import Blog from "awstarter/pages/Blog";
-import BlogPostPage from "awstarter/pages/Blog/BlogPostPage";
-import Architecture from "awstarter/pages/Architecture";
-import Roadmap from "awstarter/pages/Roadmap";
+// CloudStart pages
+import Home from "CloudStart/pages/Home";
+import Author from "CloudStart/pages/Author";
+import Blog from "CloudStart/pages/Blog";
+import BlogPostPage from "CloudStart/pages/Blog/BlogPostPage";
+import Architecture from "CloudStart/pages/Architecture";
+import Roadmap from "CloudStart/pages/Roadmap";
 
 const routes = [
   {
     name: "home",
     icon: <Icon>home</Icon>,
-    route: "/awstarter/home",
+    route: "/CloudStart/home",
     component: <Home />,
   },
   {
     name: "author",
     icon: <Icon>person</Icon>,
-    route: "/awstarter/author",
+    route: "/CloudStart/author",
     component: <Author />,
   },
   {
     name: "blog",
     icon: <Icon>article</Icon>,
-    route: "/awstarter/blog",
+    route: "/CloudStart/blog",
     component: <Blog />,
   },
   {
     name: "Blog Post",
-    route: "/awstarter/blog/:slug",
+    route: "/CloudStart/blog/:slug",
     component: <BlogPostPage />,
   },
   {
     name: "architecture",
     icon: <Icon>architecture</Icon>,
-    route: "/awstarter/architecture",
+    route: "/CloudStart/architecture",
     component: <Architecture />,
   },
   {
@@ -59,7 +59,7 @@ const routes = [
   {
     name: "github",
     icon: <GitHubIcon />,
-    href: "https://github.com/JaviGG02/AWStarter",
+    href: "https://github.com/JaviGG02/CloudStart",
   },
   {
     name: "linkedin",

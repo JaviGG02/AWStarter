@@ -25,9 +25,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 // Material Kit 2 React themes
 import theme from "assets/theme";
 
-// AWStarter routes
-import awstarterRoutes from "awstarter/routes";
-import AWStarter from "awstarter";
+// CloudStart routes
+import CloudStartRoutes from "CloudStart/routes";
+import CloudStart from "CloudStart";
 
 export default function App() {
   const { pathname } = useLocation();
@@ -55,11 +55,11 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Routes>
-        {getRoutes(awstarterRoutes)}
-        <Route path="/awstarter/*" element={<AWStarter />} />
+        {getRoutes(CloudStartRoutes)}
+        <Route path="/CloudStart/*" element={<CloudStart />} />
         <Route path="/presentation" element={<Presentation />} />
-        <Route path="/" element={<Navigate to="/awstarter/home" />} />
-        <Route path="*" element={<Navigate to="/awstarter/home" />} />
+        <Route path="/" element={<Navigate to="/CloudStart/home" />} />
+        <Route path="*" element={<Navigate to="/CloudStart/home" />} />
       </Routes>
     </ThemeProvider>
   );

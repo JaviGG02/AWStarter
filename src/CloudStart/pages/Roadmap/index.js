@@ -11,7 +11,7 @@ import MKNavbar from "components/MKNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // Routes
-import routes from "awstarter/routes";
+import routes from "CloudStart/routes";
 import footerRoutes from "footer.routes";
 import { WrapText } from "@mui/icons-material";
 
@@ -77,7 +77,7 @@ const Roadmap = () => {
   return (
     <>
       <MKNavbar
-        brand="AWStarter"
+        brand="CloudStart"
         routes={routes}
         transparent={true}
         light={true}

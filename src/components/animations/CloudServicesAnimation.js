@@ -596,12 +596,12 @@ function CloudServicesAnimation({ onDiscoverClick }) {
       if (titleRef.current) {
         titleRef.current.style.opacity = '1';
         titleRef.current.style.transform = 'translateY(0)';
-        typeText(titleRef.current, 'AW', 0, () => {
+        typeText(titleRef.current, 'Cloud', 0, () => {
           // Add the highlighted part
           const span = document.createElement('span');
           span.className = 'highlight';
           span.style.color = '#FF9900'; // AWS orange
-          typeTextInElement(span, 'Starter', 0, () => {
+          typeTextInElement(span, 'Start', 0, () => {
             // Show subtitle after title is complete
             if (subtitleRef.current) {
               subtitleRef.current.style.opacity = '1';

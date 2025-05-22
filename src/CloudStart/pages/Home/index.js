@@ -19,8 +19,8 @@ import MKNavbar from "components/MKNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // Routes
-import routes from "awstarter/routes";
-import footerRoutes from "awstarter/footer.routes";
+import routes from "CloudStart/routes";
+import footerRoutes from "CloudStart/footer.routes";
 
 // Icons
 import { Icon } from "@mui/material";
@@ -53,7 +53,7 @@ function Home() {
   return (
     <>
       <MKNavbar
-        brand="AWStarter"
+        brand="CloudStart"
         routes={routes}
         transparent
         light
@@ -75,7 +75,7 @@ function Home() {
                 <Grid item xs={22} lg={6}>
                   {/* Introduction Section */}
                   <MKTypography variant="h3" mb={3}>
-                    Welcome to AWStarter Tech Hub
+                    Welcome to CloudStart Tech Hub
                   </MKTypography>
                   <MKTypography variant="body1" color="text" mb={4}>
                     This is my personal project — a space where I share my journey, experiences, and insights as a cloud enthusiast and Amazon team member. Here, I post blogs about cloud computing, AWS services, tips for landing a job at Amazon, and what life is really like inside one of the world's leading tech companies. Whether you're starting out or already deep in your tech career, I invite you to explore, learn, and grow with me.
@@ -180,7 +180,7 @@ function Home() {
                           color="info"
                           size="large"
                           component={Link}
-                          to="/awstarter/blog"
+                          to="/CloudStart/blog"
                         >
                           Explore Articles
                         </MKButton>
@@ -191,7 +191,7 @@ function Home() {
                           color="info"
                           size="large"
                           component={Link}
-                          to="/awstarter/author"
+                          to="/CloudStart/author"
                         >
                           About Me
                         </MKButton>

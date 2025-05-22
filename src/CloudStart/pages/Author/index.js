@@ -15,6 +15,7 @@ Coded by www.creative-tim.com
 
 // @mui material components
 import Card from "@mui/material/Card";
+import Button from "@mui/material/Button";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
@@ -32,13 +33,12 @@ import Skills from "./sections/Skills";
 import Experience from "./sections/Experience";
 import Education from "./sections/Education";
 
-// @mui material components
-import Button from "@mui/material/Button";
+// Icons
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 // Routes
-import routes from "awstarter/routes";
-import footerRoutes from "awstarter/footer.routes";
+import routes from "CloudStart/routes";
+import footerRoutes from "CloudStart/footer.routes";
 
 // Images
 import bgImage from "assets/images/banner-author.png";
@@ -46,52 +46,52 @@ import bgImage from "assets/images/banner-author.png";
 function Author() {
   return (
     <>
-      <MKNavbar
-        brand="AWStarter"
-        routes={routes}
-        transparent
-        light
-      />
-      <MKBox bgColor="white">
-        <MKBox
-          minHeight="40rem"
-          width="100%"
-          sx={{
-            backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
-              `${linearGradient(
-                rgba(gradients.dark.main, 0.6),
-                rgba(gradients.dark.state, 0.6)
-              )}, url(${bgImage})`,
-            // backgroundSize: "cover",
-            backgroundPosition: "center",
-            display: "grid",
-            placeItems: "center",
-          }}
-        >
+      <MKBox position="relative">
+        <MKNavbar
+          brand="CloudStart"
+          routes={routes}
+          transparent
+          light
+        />
+        <MKBox bgColor="white">
           <MKBox
-            textAlign="center"
-            color="white"
-            p={3}
+            minHeight="40rem"
+            width="100%"
+            sx={{
+              backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
+                `${linearGradient(
+                  rgba(gradients.dark.main, 0.6),
+                  rgba(gradients.dark.state, 0.6)
+                )}, url(${bgImage})`,
+              backgroundPosition: "center",
+              display: "grid",
+              placeItems: "center",
+            }}
           >
-            <MKTypography
-              variant="h1"
-              fontWeight="bold"
+            <MKBox
+              textAlign="center"
               color="white"
-              mb={1}
-              textTransform="uppercase"
+              p={3}
             >
-              Javier Garcia
-            </MKTypography>
-            <MKTypography
-              variant="body1"
-              color="white"
-              opacity={0.8}
-              mb={3}
-            >
-              AWS Solutions Architect
-            </MKTypography>
+              <MKTypography
+                variant="h1"
+                fontWeight="bold"
+                color="white"
+                mb={1}
+                textTransform="uppercase"
+              >
+                Javier Garcia
+              </MKTypography>
+              <MKTypography
+                variant="body1"
+                color="white"
+                opacity={0.8}
+                mb={3}
+              >
+                AWS Solutions Architect
+              </MKTypography>
+            </MKBox>
           </MKBox>
-        </MKBox>
         <Card
           sx={{
             p: 2,
@@ -130,6 +130,7 @@ function Author() {
         <MKBox pt={6} px={1} mt={6}>
           <DefaultFooter content={footerRoutes} />
         </MKBox>
+      </MKBox>
       </MKBox>
     </>
   );

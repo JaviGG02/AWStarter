@@ -49,7 +49,7 @@ function MKNavbar({ brand, routes, transparent = false, light = false }) {
 
   // Render the routes for the navigation
   const renderRoutes = routes.map(({ name, icon, route, href }) => {
-    if (route == "/awstarter/blog/:slug") return;
+    if (route == "/CloudStart/blog/:slug") return;
     const routeComponent = {
       component: Link,
       to: route,
@@ -118,6 +118,15 @@ function MKNavbar({ brand, routes, transparent = false, light = false }) {
             alignItems="center"
             lineHeight={1}
           >
+            <MKBox
+              component="img"
+              src="/favicon.png"
+              alt="Brand Logo"
+              width="30px"
+              height="30px"
+              mr={1}
+              sx={{ objectFit: "contain" }}
+            />
             <MKTypography
               variant="button"
               fontWeight="bold"

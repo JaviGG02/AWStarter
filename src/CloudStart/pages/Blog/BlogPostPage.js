@@ -17,8 +17,8 @@ import MKNavbar from "components/MKNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // Routes
-import routes from "awstarter/routes";
-import footerRoutes from "awstarter/footer.routes";
+import routes from "CloudStart/routes";
+import footerRoutes from "CloudStart/footer.routes";
 
 // Images
 import bgImage from "assets/images/containarization.png";
@@ -163,7 +163,7 @@ function BlogPostPage() {
   return (
     <>
       <MKNavbar
-        brand="AWStarter"
+        brand="CloudStart"
         routes={routes}
         transparent
         light
@@ -278,7 +278,7 @@ function BlogPostPage() {
                   variant="gradient"
                   color="info"
                   component="a"
-                  href="/awstarter/blog"
+                  href="/CloudStart/blog"
                 >
                   Back to Blog
                 </MKButton>

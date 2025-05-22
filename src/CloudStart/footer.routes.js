@@ -13,14 +13,14 @@ const date = new Date().getFullYear();
 
 export default {
   brand: {
-    name: "AWStarter",
+    name: "CloudStart",
     image: awsLogo,
-    route: "/awstarter/home",
+    route: "/CloudStart/home",
   },
   socials: [
     {
       icon: <GitHubIcon />,
-      link: "https://github.com/JaviGG02/AWStarter",
+      link: "https://github.com/JaviGG02/CloudStart",
     },
     {
       icon: <LinkedInIcon />,
@@ -28,17 +28,17 @@ export default {
     },
     {
       icon: <EmailIcon />,
-      link: "mailto:awstarter@gmail.com",
+      link: "mailto:CloudStart@gmail.com",
     },
   ],
   menus: [
     {
       name: "pages",
       items: [
-        { name: "home", href: "/awstarter/home" },
-        { name: "author", href: "/awstarter/author" },
-        { name: "blog", href: "/awstarter/blog" },
-        { name: "architecture", href: "/awstarter/architecture" },
+        { name: "home", href: "/CloudStart/home" },
+        { name: "author", href: "/CloudStart/author" },
+        { name: "blog", href: "/CloudStart/blog" },
+        { name: "architecture", href: "/CloudStart/architecture" },
       ],
     },
     {
@@ -53,15 +53,15 @@ export default {
     {
       name: "contact",
       items: [
-        { name: "email", href: "mailto:awstarter@gmail.com" },
+        { name: "email", href: "mailto:CloudStart@gmail.com" },
         { name: "linkedin", href: "https://www.linkedin.com/in/javier-garcia-garcia-1ba311229/" },
-        { name: "github", href: "https://github.com/JaviGG02/AWStarter" },
+        { name: "github", href: "https://github.com/JaviGG02/CloudStart" },
       ],
     },
   ],
   copyright: (
     <>
-      All rights reserved. Copyright © {date} AWStarter by{" "}
+      All rights reserved. Copyright © {date} CloudStart by{" "}
       <a href="https://aws.amazon.com/" target="_blank" rel="noreferrer">
         Javier Garcia
       </a>

@@ -20,8 +20,8 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 import CenteredFooter from "examples/Footers/CenteredFooter";
 
 // Routes
-import routes from "awstarter/routes";
-import footerRoutes from "awstarter/footer.routes";
+import routes from "CloudStart/routes";
+import footerRoutes from "CloudStart/footer.routes";
 
 // Images
 import bgImage from "assets/images/containarization.png";
@@ -92,7 +92,7 @@ function Blog() {
           date: frontMatter.date || "",
           excerpt: excerpt,
           image: frontMatter.featured_image || "",
-          link: `/awstarter/blog/${slug}`,
+          link: `/CloudStart/blog/${slug}`,
           folder: slug,
           markdownFile: "post.md",
           author: frontMatter.author || "",
@@ -178,7 +178,7 @@ function Blog() {
   return (
     <>
       <MKNavbar
-        brand="AWStarter"
+        brand="CloudStart"
         routes={routes}
         transparent
         light
