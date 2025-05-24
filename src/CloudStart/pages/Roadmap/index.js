@@ -12,8 +12,7 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // Routes
 import routes from "CloudStart/routes";
-import footerRoutes from "footer.routes";
-import { WrapText } from "@mui/icons-material";
+import footerRoutes from "CloudStart/footer.routes";
 
 
 const roadmapItems = [
@@ -76,135 +75,138 @@ const Roadmap = () => {
 
   return (
     <>
-      <MKNavbar
-        brand="CloudStart"
-        routes={routes}
-        transparent={true}
-        light={true}
-      />
-      
-      <MKBox
-        ref={containerRef}
-        onWheel={handleWheel}
-        sx={{
-          minHeight: "100vh",
-          overflow: "hidden",
-          scrollSnapType: "y mandatory",
-          pt: 8, // Add padding top to account for navbar
-        }}
-      >
-        {roadmapItems.map(({ title, description }, i) => (
-          <motion.section
-            key={title}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ 
-              opacity: i === activeIndex ? 1 : 0.5, 
-              y: i === activeIndex ? 0 : 20,
-              transition: { duration: 0.6, ease: "easeOut" }
-            }}
-            style={{
-              scrollSnapAlign: "start",
-              height: "100vh",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              textAlign: "center",
-              padding: "2rem",
-              backgroundColor: i % 2 === 0 ? "#ffcc99" : "#e3f2fd",
-            }}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+      <MKBox position="relative">
+        <MKNavbar
+          brand="CloudStart"
+          routes={routes}
+          transparent={true}
+          light={true}
+        />
+        
+        <MKBox
+          ref={containerRef}
+          onWheel={handleWheel}
+          sx={{
+            minHeight: "100vh",
+            overflow: "hidden",
+            scrollSnapType: "y mandatory",
+            pt: 8, // Add padding top to account for navbar
+          }}
+        >
+          {roadmapItems.map(({ title, description }, i) => (
+            <motion.section
+              key={title}
+              initial={{ opacity: 0, y: 50 }}
               animate={{ 
                 opacity: i === activeIndex ? 1 : 0.5, 
-                scale: i === activeIndex ? 1 : 0.95,
-                transition: { delay: 0.2, duration: 0.5 }
+                y: i === activeIndex ? 0 : 20,
+                transition: { duration: 0.6, ease: "easeOut" }
+              }}
+              style={{
+                scrollSnapAlign: "start",
+                height: "100vh",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
+                padding: "2rem",
+                backgroundColor: i % 2 === 0 ? "#ffcc99" : "#e3f2fd",
               }}
             >
-              <MKTypography
-                variant="h1"
-                mb={2}
-                color="dark"
-              >
-                {title}
-              </MKTypography>
-              
-              <MKTypography
-                variant="body1"
-                color="dark"
-                mb={4}
-                sx={{
-                  // maxWidth: "600px",
-                  fontSize: "1.25rem",
-                  textAlign: "center",
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ 
+                  opacity: i === activeIndex ? 1 : 0.5, 
+                  scale: i === activeIndex ? 1 : 0.95,
+                  transition: { delay: 0.2, duration: 0.5 }
                 }}
               >
-                {description}
-              </MKTypography>
-            </motion.div>
-            
-            {/* Progress indicator */}
-            <MKBox 
-              sx={{ 
-                display: "flex", 
-                mt: 4, 
-                gap: 1 
-              }}
-            >
-              {roadmapItems.map((_, index) => (
-                <MKBox
-                  key={index}
-                  component={motion.div}
-                  whileHover={{ scale: 1.2 }}
-                  onClick={() => setActiveIndex(index)}
+                <MKTypography
+                  variant="h1"
+                  mb={2}
+                  color="dark"
+                >
+                  {title}
+                </MKTypography>
+                
+                <MKTypography
+                  variant="body1"
+                  color="dark"
+                  mb={4}
                   sx={{
-                    width: 12,
-                    height: 12,
-                    borderRadius: "50%",
-                    bgcolor: index === activeIndex ? "info.main" : "grey.300",
-                    cursor: "pointer",
-                    transition: "background-color 0.3s ease",
-                  }}
-                />
-              ))}
-            </MKBox>
-            
-            {/* Show Next button only if not the last item */}
-              {i < roadmapItems.length - 1 && (
-                <button
-                  onClick={() => setActiveIndex(i + 1)}
-                  aria-label="Next roadmap section"
-                  style={{
-                    marginTop: "3rem",
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    outline: "none",
-                    animation: "bounce 2s infinite",
+                    // maxWidth: "600px",
+                    fontSize: "1.25rem",
+                    textAlign: "center",
                   }}
                 >
-                  <svg
-                    width="36"
-                    height="36"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#1A73E8"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                  {description}
+                </MKTypography>
+              </motion.div>
+              
+              {/* Progress indicator */}
+              <MKBox 
+                sx={{ 
+                  display: "flex", 
+                  mt: 4, 
+                  gap: 1 
+                }}
+              >
+                {roadmapItems.map((_, index) => (
+                  <MKBox
+                    key={index}
+                    component={motion.div}
+                    whileHover={{ scale: 1.2 }}
+                    onClick={() => setActiveIndex(index)}
+                    sx={{
+                      width: 12,
+                      height: 12,
+                      borderRadius: "50%",
+                      bgcolor: index === activeIndex ? "info.main" : "grey.300",
+                      cursor: "pointer",
+                      transition: "background-color 0.3s ease",
+                    }}
+                  />
+                ))}
+              </MKBox>
+              
+              {/* Show Next button only if not the last item */}
+                {i < roadmapItems.length - 1 && (
+                  <button
+                    onClick={() => setActiveIndex(i + 1)}
+                    aria-label="Next roadmap section"
+                    style={{
+                      marginTop: "3rem",
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      outline: "none",
+                      animation: "bounce 2s infinite",
+                    }}
                   >
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <polyline points="19 12 12 19 5 12"></polyline>
-                  </svg>
-                </button>
-              )}
+                    <svg
+                      width="36"
+                      height="36"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#1A73E8"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <polyline points="19 12 12 19 5 12"></polyline>
+                    </svg>
+                  </button>
+                )}
 
-          </motion.section>
-        ))}
+            </motion.section>
+          ))}
+        </MKBox>
+        <MKBox pt={6} px={1} mt={6}>
+          <DefaultFooter content={footerRoutes} />
+        </MKBox>
       </MKBox>
-      
-      <DefaultFooter content={footerRoutes} />
     </>
   );
 };

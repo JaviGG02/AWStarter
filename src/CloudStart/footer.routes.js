@@ -25,11 +25,7 @@ export default {
     {
       icon: <LinkedInIcon />,
       link: "https://www.linkedin.com/in/javier-garcia-garcia-1ba311229/",
-    },
-    {
-      icon: <EmailIcon />,
-      link: "mailto:CloudStart@gmail.com",
-    },
+    }
   ],
   menus: [
     {
@@ -39,6 +35,7 @@ export default {
         { name: "author", href: "/CloudStart/author" },
         { name: "blog", href: "/CloudStart/blog" },
         { name: "architecture", href: "/CloudStart/architecture" },
+        { name: "roadmap", href: "/CloudStart/roadmap" },
       ],
     },
     {

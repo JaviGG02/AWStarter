@@ -164,36 +164,39 @@ function MKNavbar({ brand, routes, transparent = false, light = false }) {
                 },
               }}
             >
-              {routes.map(({ name, icon, route, href }) => (
-                <MKTypography
-                  key={name}
-                  component={route ? Link : "a"}
-                  to={route || ""}
-                  href={href || ""}
-                  target={href ? "_blank" : ""}
-                  rel={href ? "noreferrer" : ""}
-                  variant="button"
-                  color="text"
-                  fontWeight="regular"
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    py: 1,
-                    px: 2,
-                    borderRadius: "0.375rem",
-                    transition: "background-color 300ms ease",
-                    "&:hover": { bgcolor: "rgba(0,0,0,0.04)" },
-                  }}
-                  onClick={closeMobileMenu}
-                >
-                  {icon && (
-                    <MKBox component="span" color="inherit" mr={1} lineHeight={0} verticalAlign="middle">
-                      {icon}
-                    </MKBox>
-                  )}
-                  {name}
-                </MKTypography>
-              ))}
+              {routes.map(({ name, icon, route, href }) => {
+                if (route === "/CloudStart/blog/:slug") return null;
+                return (
+                  <MKTypography
+                    key={name}
+                    component={route ? Link : "a"}
+                    to={route || ""}
+                    href={href || ""}
+                    target={href ? "_blank" : ""}
+                    rel={href ? "noreferrer" : ""}
+                    variant="button"
+                    color="text"
+                    fontWeight="regular"
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      py: 1,
+                      px: 2,
+                      borderRadius: "0.375rem",
+                      transition: "background-color 300ms ease",
+                      "&:hover": { bgcolor: "rgba(0,0,0,0.04)" },
+                    }}
+                    onClick={closeMobileMenu}
+                  >
+                    {icon && (
+                      <MKBox component="span" color="inherit" mr={1} lineHeight={0} verticalAlign="middle">
+                        {icon}
+                      </MKBox>
+                    )}
+                    {name}
+                  </MKTypography>
+                );
+              })}
             </Menu>
           </MKBox>
         </Toolbar>

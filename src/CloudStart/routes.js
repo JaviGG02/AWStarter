@@ -53,7 +53,7 @@ const routes = [
   {
     name: "roadmap",
     icon: <Icon>map</Icon>,
-    route: "/pages/roadmap",
+    route: "/CloudStart/roadmap",
     component: <Roadmap />,
   },
   {
